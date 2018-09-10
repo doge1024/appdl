@@ -8,15 +8,35 @@ from app import app
 def index():
     return render_template("index.html")
 
-# ?key=111
+@app.route('/api/transform/appicon')
+# ?url=xxx
+def transform_appicon():
+    resp = request_get(request.args.get('url'))
+    return (resp.content, resp.status_code, resp.headers.items())
+
+# ?key=111&page=1
 @app.route('/api/search')
 def search():
-    resp = send_request(request.args.get('key'))
+    key = request.args.get('key')
+    page = request.args.get('page')
+    pageLimit = request.args.get('pageLimit')
+    resp = send_request(key, page, pageLimit)
     return (resp.text, resp.status_code, resp.headers.items())
 
-def send_request(key):
+def request_get(url):
+    try:
+        response = requests.get(url)
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    except requests.exceptions.RequestException:
+        return None
+
+def send_request(key, page, pageLimit):
     # Request
-    # POST http://jsondata.25pp.com/index.html
+
+    key = key if key else ""
+    page = int(page) if (page and int(page) > 0) else 0
+    pageLimit = int(pageLimit) if ( pageLimit and int(pageLimit) > 0) else 15
 
     try:
         response = requests.post(
@@ -31,9 +51,9 @@ def send_request(key):
                 "dcType": 3,
                 "rw": "1",
                 "dcLevel": "0",
-                "pageLimit": 30,
+                "pageLimit": pageLimit,
                 "keyword": key,
-                "page": 0
+                "page": page
             })
         )
         return response
