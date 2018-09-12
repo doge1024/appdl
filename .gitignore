@@ -1,1 +1,6 @@
 */.idea
+dl-react/dist
+dl-react/node_modules
+dl-flask/app/__pycache__
+dl-flask/app/static
+dl-flask/app/templates
