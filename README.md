@@ -7,19 +7,14 @@
 问题
 
 1. 如何运行？
-
-      ```
-#1. 进入dl-flask
-cd dl-flask     
-#2. 在python3环境下，执行
-pip install -r requirements.txt   
-python manage.py runserver
-#3. 在浏览器进入 http://localhost:5000
-      ```
+    1. 进入dl-flask
+    `cd dl-flask`
+    2. 在python3环境下，执行
+    `pip install -r requirements.txt`     `python manage.py runserver`
+    3. 在浏览器进入 http://localhost:5000
       
 
 <br/>
 TODO：
-[ ] 把这个服务加到服务器
-      
 
+- [ ] 把这个服务加到服务器
