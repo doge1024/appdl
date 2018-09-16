@@ -2,4 +2,5 @@
 dl-react/dist
 dl-react/node_modules
 dl-flask/app/__pycache__
-dl-flask/app/static
+dl-flask/app/__init__.pyc
+dl-flask/app/appdl.pyc
