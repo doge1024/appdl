@@ -9,6 +9,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
+  "dev": "./node_modules/.bin/webpack-dev-server --content-base dist",
   "devDependencies": {
     "atool-build": "^0.9.0",
     "atool-test-mocha": "^0.2.1",
@@ -16,6 +17,7 @@
     "babel-plugin-import": "^1.0.1",
     "babel-plugin-transform-runtime": "^6.8.0",
     "babel-runtime": "^6.9.2",
+    "clean-webpack-plugin": "^0.1.19",
     "dora": "^0.5.0",
     "dora-plugin-webpack": "^0.8.1",
     "eslint": "^3.8.1",
@@ -24,15 +26,18 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
     "expect": "^1.20.1",
+    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-react-root-plugin": "^0.9.0",
     "pre-commit": "1.x",
-    "redbox-react": "^1.2.6"
+    "redbox-react": "^1.2.6",
+    "webpack-merge": "^4.1.4"
   },
   "pre-commit": [
     "lint"
   ],
   "scripts": {
     "build": "atool-build",
-    "postbuild": "cp -rf dist/* ../dl-flask/app/static;",
+    "postbuild": "cp -rf dist/* ../dl-flask/app/;",
     "lint": "eslint --ext .js,.jsx src/",
     "start": "dora --plugins webpack",
     "test": "atool-test-mocha ./**/__tests__/*-test.js"
