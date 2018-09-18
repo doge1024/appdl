@@ -54,13 +54,7 @@ class App extends Component {
             return
         }
 
-        this.setState({
-            currentPage: null,
-            totalPage: 0,
-            keyword: keyword
-        }, ()=>{
-            this.requestData( this.state.keyword, this.state.currentPage)
-        })
+        this.requestData( this.state.keyword, 1)
     };
 
     requestData(keyword, page) {
@@ -100,12 +94,7 @@ class App extends Component {
 
     paginationOnChange = (index)=>{
         if (index > 0 && index <= this.state.totalPage) {
-            this.setState({
-                currentPage: index,
-                data: null,
-            }, ()=>{
-                this.requestData( this.state.keyword, this.state.currentPage)
-            });
+            this.requestData( this.state.keyword, index)
         }
     };
 
