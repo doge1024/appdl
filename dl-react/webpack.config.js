@@ -29,11 +29,13 @@ module.exports = function(webpackConfig){
 
     appExport = {
         devServer: {
-            proxy: "http://localhost:5000"
+            proxy: 'http://127.0.0.1:5000'
         },
         output: {
             path: path.resolve(__dirname, './dist/static/')
         }
     };
-    return merge(webpackConfig, appExport);
+
+    let finalWebpackConfig = merge(webpackConfig, appExport)
+    return finalWebpackConfig;
 };

@@ -15,7 +15,7 @@ class AppCell extends Component {
         let appInfo = this.props.appInfo;
         let first = this.props.first;
         let imageUrl = appInfo.thumb;
-        imageUrl = cfetch.getUrl("/transform/appicon", {url: encodeURIComponent(imageUrl)});
+        imageUrl = cfetch.getUrl("/api/transform/appicon", {url: encodeURIComponent(imageUrl)});
 
         return (
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", height: 90, marginBottom: 20 }}>
@@ -54,7 +54,7 @@ class App extends Component {
             return
         }
 
-        this.requestData( this.state.keyword, 1)
+        this.requestData( keyword, 1)
     };
 
     requestData(keyword, page) {
@@ -67,7 +67,7 @@ class App extends Component {
             page = parseInt(page)
         }
 
-        fetch(cfetch.getUrl("/search", {key: keyword, page: page - 1, pageLimit: PageLimit}),{
+        fetch(cfetch.getUrl("/api/search", {key: keyword, page: page - 1, pageLimit: PageLimit}),{
             method: 'GET'
         }).then(
             (response)=>{
@@ -76,7 +76,7 @@ class App extends Component {
                     return;
                 }
                 response.json().then((data)=>{
-                    let state = {"data": data, currentPage: page};
+                    let state = {"data": data, currentPage: page, keyword: keyword};
                     if (page == 1) {
                         state.totalPage = parseInt(data.pageCount)
                     }

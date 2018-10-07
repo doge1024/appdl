@@ -1,21 +1,21 @@
 const cfetch = Object();
 cfetch.getUrl = (url, parm)=>{
-    let fullUrl = "";
-    if(window.location.href.indexOf("localhost") !== -1){// !=-1含有 ==-1不含有
-        fullUrl = "http://localhost:5000/api" + url
-    } else {
-        fullUrl = url
-    }
+    let parms = "";
+    // if(window.location.href.indexOf("localhost") !== -1){// !=-1含有 ==-1不含有
+    //     url = "http://localhost:5000" + url
+    // }
 
     let index = 0;
     Object.keys(parm).forEach(function(key){
         let separator = "&";
-        if (index === 0 && fullUrl.indexOf("?") === -1) {
+        if (index === 0 && parms.indexOf("?") === -1) {
             separator = "?"
         }
-        fullUrl = fullUrl + separator + String(key) + "=" + (parm[key] ? String(parm[key]) : "");
+        parms = parms + separator + String(key) + "=" + (parm[key] ? String(parm[key]) : "");
         index++;
     });
+
+    let fullUrl = url + parms;
     return fullUrl
 };
 
