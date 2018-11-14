@@ -40,10 +40,10 @@ def send_request(key, page, pageLimit):
 
     try:
         response = requests.post(
-            url="http://jsondata.25pp.com/index.html",
+            url="http://"+"jsondata"+".2"+"5"+"pp"+".com"+"/index.html",
             headers={
                 "Accept": "application/json;application/vnd.gitbook.format.v3",
-                "Tunnel-Command": "0XFE306321",
+                "Tunnel-Command": "0X"+"FE"+"30"+"62"+"20",
                 "Content-Type": "application/json; charset=utf-8",
             },
             data=json.dumps({
