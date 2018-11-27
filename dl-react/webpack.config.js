@@ -19,9 +19,20 @@ module.exports = function(webpackConfig){
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: 'pp助手-越狱App下载',
-            filename: '../templates/index.html'
+            filename: '../templates/index.html',
+            // Required
+            inject: false,
+            template: require('html-webpack-template'),
+            appMountId: 'root',
+            // 可以參考 html-webpack-template 的參數設定
+            // 下面為提供 GA
+            googleAnalytics: {
+                trackingId: 'UA-129899960-1',
+                pageViewOnLoad: true
+            }
         }),
-        new ReactRootPlugin(),
+        
+        // new ReactRootPlugin(),
         new webpack.DefinePlugin({
             __DEV__: JSON.stringify('true')
         }),
